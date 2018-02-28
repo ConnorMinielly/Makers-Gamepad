@@ -24,10 +24,6 @@ void setup()
   Joystick.begin();
   pinMode(buttonA, INPUT);
   pinMode(buttonB, INPUT);
-
-  // Serial.begin(9600);
-  // initX = map(analogRead(joyX), 0, 1023, 0, 255);
-  // initY = map(analogRead(joyY), 0, 1023, 0, 255);
 }
 
 // the loop function runs over and over again forever
@@ -35,12 +31,8 @@ void loop()
 {
   x = map(analogRead(joyX), 0, 1023, 0, 255) - 127;
   Joystick.setXAxis(x * (-1) + 1);
-  // Serial.print("X -> ");
-  // Serial.println(x * (-1) + 1);
   y = map(analogRead(joyY), 0, 1023, 0, 255) - 127;
   Joystick.setYAxis(y * (-1) + 1);
-  // Serial.print("Y -> ");
-  // Serial.println(y * (-1) + 1);
 
   if (digitalRead(buttonA) == HIGH)
   {

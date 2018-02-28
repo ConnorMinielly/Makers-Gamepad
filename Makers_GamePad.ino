@@ -9,19 +9,35 @@
 */
 #include <Arduino.h>
 #include <Joystick.h>
+
+const int joyX = A0;
+const int joyY = A1;
+int initX = 0;
+int initY = 0;
+int x = 0;
+int y = 0;
+
 // the setup function runs once when you press reset or power the board
 void setup()
 {
   Joystick.begin();
-  // initialize digital pin LED_BUILTIN as an output.
-  pinMode(LED_BUILTIN, OUTPUT);
+
+  // Serial.begin(9600);
+  // initX = map(analogRead(joyX), 0, 1023, 0, 255);
+  // initY = map(analogRead(joyY), 0, 1023, 0, 255);
 }
 
 // the loop function runs over and over again forever
 void loop()
 {
-  digitalWrite(LED_BUILTIN, HIGH); // turn the LED on (HIGH is the voltage level)
-  delay(100);                      // wait for a second
-  digitalWrite(LED_BUILTIN, LOW);  // turn the LED off by making the voltage LOW
-  delay(100);                      // wait for a second
+  x = map(analogRead(joyX), 0, 1023, 0, 255) - 127;
+  Joystick.setXAxis(x * (-1) + 1);
+  // Serial.print("X -> ");
+  // Serial.println(x * (-1) + 1);
+  y = map(analogRead(joyY), 0, 1023, 0, 255) - 127;
+  Joystick.setYAxis(y * (-1) + 1);
+  // Serial.print("Y -> ");
+  // Serial.println(y * (-1) + 1);
+
+  if ()
 }

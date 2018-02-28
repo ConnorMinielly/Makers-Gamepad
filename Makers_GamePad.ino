@@ -12,15 +12,18 @@
 
 const int joyX = A0;
 const int joyY = A1;
-int initX = 0;
-int initY = 0;
 int x = 0;
 int y = 0;
+
+const int buttonA = 1;
+const int buttonB = 2;
 
 // the setup function runs once when you press reset or power the board
 void setup()
 {
   Joystick.begin();
+  pinMode(buttonA, INPUT);
+  pinMode(buttonB, INPUT);
 
   // Serial.begin(9600);
   // initX = map(analogRead(joyX), 0, 1023, 0, 255);
@@ -39,5 +42,21 @@ void loop()
   // Serial.print("Y -> ");
   // Serial.println(y * (-1) + 1);
 
-  if ()
+  if (digitalRead(buttonA) == HIGH)
+  {
+    Joystick.setButton(0, 1);
+  }
+  else
+  {
+    Joystick.setButton(0, 0);
+  }
+
+  if (digitalRead(buttonB) == HIGH)
+  {
+    Joystick.setButton(2, 1);
+  }
+  else
+  {
+    Joystick.setButton(2, 0);
+  }
 }
